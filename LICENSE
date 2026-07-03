@@ -1,0 +1,18 @@
+Cabinet of Mind — a principle for local, multi-model cabinets.
+
+Copyright (c) 2026 the Cabinet of Mind author.
+
+This work — the documents in this repository (README.md, PRINCIPLE.md,
+CASEBOOK.md, SETUP.md and any other prose) — is licensed under the
+Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+You are free to share and adapt it for any purpose, including commercially,
+as long as you give appropriate credit. Take the eight principles, rename the
+cast, wire your own tools, and build your own cabinet — that is the point.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Note: when a reference implementation (source code) is added to this repository
+later, that code will carry its own software license (MIT), stated in its own
+directory. This CC BY license covers the writing; the MIT license will cover
+the code. They do not conflict.

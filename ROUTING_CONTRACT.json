@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "tag_format": "json_last_line",
+  "strict_required_for": ["gol"],
+  "optional_for": ["hux", "dro"],
+  "equal_sages": ["hux", "dro"],
+  "schema": {
+    "route": {"enum": ["hux", "dro", "gol", "boss", ""]},
+    "write_intent": "boolean",
+    "arch_decision": "boolean",
+    "risk_level": {"enum": ["low", "medium", "high"]},
+    "message": "string"
+  },
+  "rules_by_role": {
+    "hux": {"forbidden_routes": ["hux"], "default_targets": ["dro", "gol", "boss"]},
+    "dro": {"forbidden_routes": ["dro"], "default_targets": ["hux", "gol", "boss"]},
+    "gol": {"forbidden_routes": ["gol"], "default_targets": ["hux", "dro", "boss"]}
+  },
+  "high_risk_architecture_gate": {
+    "trigger": {"arch_decision": true, "risk_level": "high", "route": "boss"},
+    "requires": "internal third critical pass in the sage final before Boss approval",
+    "satisfied_by": "final text states what changed because of the extra pass or records that nothing changed and rituality risk remains"
+  },
+  "boss_triggers": [
+    "fork", "irreversible", "secret", "money",
+    "external_service", "data_deletion", "leaving_allowed_roots"
+  ],
+  "cabinet_tag_routes_to": ["hux", "dro"],
+  "fallback_intent_filter": {
+    "dispatch": ["question", "task", "handoff"],
+    "suppress": ["ack_only", "deescalation"],
+    "ack_only_examples": [
+      "heard you, agreed",
+      "confirmed",
+      "no disagreement",
+      "closing the echo loop",
+      "acknowledged"
+    ]
+  },
+  "hands_role": "gol"
+}

@@ -1,0 +1,39 @@
+{
+  "runtime_root": "C:\\cabinet_of_mind",
+  "active_project": "",
+  "ui": "http://localhost:9390",
+  "ws": "ws://localhost:8381",
+  "ollama": {
+    "endpoint": "http://127.0.0.1:11434",
+    "status": "unknown"
+  },
+  "allowed_roots": [
+    "C:\\cabinet_of_mind"
+  ],
+  "agents": {
+    "hux": {
+      "cli_role": "hux",
+      "name": "Huxley",
+      "provider": "claude_code_cli",
+      "model_family": "Claude",
+      "model": "claude-opus-4-7",
+      "role_kind": "sage"
+    },
+    "dro": {
+      "cli_role": "dro",
+      "name": "Diderot",
+      "provider": "codex_cli",
+      "model_family": "GPT",
+      "model": "gpt-5.5",
+      "role_kind": "sage"
+    },
+    "gol": {
+      "cli_role": "gol",
+      "name": "Golem",
+      "provider": "ollama",
+      "model_family": "any local coder",
+      "model": "golem:hands",
+      "role_kind": "hands"
+    }
+  }
+}

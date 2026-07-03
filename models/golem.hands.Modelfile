@@ -1,0 +1,36 @@
+# Cabinet source of truth for the local Ollama model used by @gol (the hands).
+#
+# ── ANY local coder model works here ─────────────────────────────────────────
+# The FROM line below is only what the reference machine happens to run.
+# Swap it for whatever your GPU can hold, e.g.:
+#
+#   FROM qwen3-coder:30b        # ~24 GB VRAM
+#   FROM qwen2.5-coder:14b      # ~12 GB VRAM
+#   FROM deepseek-coder-v2:16b
+#   FROM codestral:22b
+#   FROM qwen2.5-coder:7b       # ~8 GB VRAM
+#
+# Then rebuild the alias from the repository root:
+#   ollama create golem:hands -f models/golem.hands.Modelfile
+#
+# Or skip this file entirely and point Cabinet at a raw model:
+#   set CABINET_HANDS_MODEL=qwen2.5-coder:14b     (env var), or
+#   edit agents.gol.model in CABINET_REALITY.json
+#
+# The sages (Claude / GPT via their CLIs) are the must-have minds;
+# the hands are deliberately replaceable.
+#
+# Runtime note:
+# adapters/ollama.py also sends these options on every /api/chat call. Keep this
+# file and the adapter defaults aligned unless a deliberate override is
+# documented.
+
+FROM qwen3-coder:30b
+
+PARAMETER num_ctx 16384
+PARAMETER temperature 0
+PARAMETER top_p 0.8
+PARAMETER top_k 20
+PARAMETER min_p 0
+PARAMETER presence_penalty 0
+PARAMETER repeat_penalty 1.05

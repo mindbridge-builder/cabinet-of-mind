@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Cabinet runtime state — local to each installation, never shared
+logs/
+work/
+.cabinet/
+CABINET_LOG.jsonl
+pending_queue.json
+agent_seen.json
+CABINET_REALITY.local.json
+notes/
+
+# Secrets — belt and suspenders; Cabinet never asks you to commit these
+.env
+*.key
+*api_key*.txt
+*token*.txt
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
