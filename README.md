@@ -121,6 +121,20 @@ Cabinet is for vibe coders and technical operators who want a local council of m
 
 It is for people who are comfortable with local tools, git, terminals, scripts, and model CLIs, and who want a warmer, more structured room to run them in.
 
+## Honest Risks
+
+Every repository says "trust me." This one tells you where it can break:
+
+1. **The CLIs are moving targets.** The sages ride on Claude Code CLI and Codex CLI — official tools that Anthropic and OpenAI change without asking us. A breaking change in their flags or output format breaks the adapters until they're patched. This is the price of the no-meter principle: the subscription CLIs are the only legal door to flat-rate frontier models.
+
+2. **The shell is stronger than the sandbox.** Write tools are checked against `allowed_roots`, but `bash_run` executes real commands — a Python path check cannot contain a shell. Cabinet's honesty layer will *report* what ran; it will not *prevent* a destructive command. The safety story is locality and your own restraint in what you grant. If you want hard isolation, run the whole cabinet in a container — that's on the roadmap as an option, not a default.
+
+3. **Arguments are budgeted, not endless.** If you worry that mandatory disagreement (Principle 8) means infinite bickering: every sage turn carries a visible `CABINET_TURN_BUDGET` counter, most decisions close in 2–4 exchanges, and at the ceiling the system forces a final synthesis to the Boss instead of another round.
+
+4. **Small models mean small patches — that's the model's ceiling, not the system's.** Cabinet's architecture places no limit on the hands' model size — any Ollama-served coder model works, from 7B to 70B+. What varies is reliability: a small model on a modest GPU will fail more often on complex patches than a large one; the harness compensates with short surgical diffs, a test referee, and bounded retries, and it refuses jobs that are too big rather than mangling them. Bigger card, bigger model, fewer retries needed — the ceiling is yours to raise.
+
+5. **Threading and asyncio live under one roof.** The server mixes an async WebSocket loop with a threaded HTTP server and thread locks. For a single-user local tool this is pragmatic and tested; if the project grows, a pure-async rewrite is the known path.
+
 ## One-Line Pitch
 
 A cozy local cabinet for vibe coders: sages argue, hands execute, **nothing is true without a tool call** — and you own every decision.
